@@ -1,0 +1,144 @@
+.chatWrapper {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  font-family: inherit;
+}
+
+.chatWindow {
+  width: 300px;
+  height: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(27, 54, 93, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.chatHeader {
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerInfo h3 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.headerInfo span {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.headerInfo span::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: #4ade80;
+  border-radius: 50%;
+}
+
+.closeButton {
+  color: white;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.chatMessages {
+  flex: 1;
+  padding: 0.8rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: #f8fafc;
+}
+
+.message {
+  max-width: 90%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.botMessage {
+  align-self: flex-start;
+  background-color: white;
+  color: var(--text);
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.userMessage {
+  align-self: flex-end;
+  background-color: var(--primary);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.chatInputArea {
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chatInputArea input {
+  flex: 1;
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-family: inherit;
+  outline: none;
+}
+
+.chatInputArea input:focus {
+  border-color: var(--accent);
+}
+
+.sendButton {
+  background-color: var(--primary);
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.sendButton:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .chatWindow {
+    width: calc(100vw - 2rem);
+    right: -1rem;
+    height: 70vh;
+  }
+}

@@ -1,0 +1,93 @@
+.navbar {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white; /* Logo tiene fondo blanco, mejor navbar blanca */
+  border-bottom: 1px solid var(--border);
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  height: 90px; /* Aumentado de 60px a 90px */
+  overflow: hidden; /* Para el recorte virtual */
+}
+
+.logoImg {
+  height: 180%; /* Escalar la imagen para que el logo se vea más grande */
+  width: auto;
+  object-fit: contain;
+  margin-top: -5px; /* Ajuste fino de posición */
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navLinks a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.navLinks a:hover {
+  color: var(--accent);
+}
+
+.cta {
+  background: var(--primary);
+  color: white !important;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.cta:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.mobileMenu {
+  display: none;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .mobileMenu {
+    display: block;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: white;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: var(--transition);
+  }
+
+  .navLinks.active {
+    transform: translateX(0);
+  }
+}
