@@ -11,7 +11,7 @@
  * y crear el HTML correspondiente en /team/.
  */
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { ExternalLink, MapPin, Mail } from 'lucide-react';
 import styles from '../styles/Pages.module.css';
 
@@ -82,12 +82,12 @@ const teamMembers = [
 ];
 
 /* Variantes de animación reutilizables */
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: 'easeOut' },
+    transition: { duration: 0.6, delay: i * 0.15, ease: 'easeOut' as const },
   }),
 };
 
