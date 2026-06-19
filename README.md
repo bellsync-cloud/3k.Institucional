@@ -71,3 +71,8 @@ export default defineConfig([
   },
 ])
 ```
+
+## CI/CD
+
+Este proyecto cuenta con un pipeline de GitHub Actions configurado en [.github/workflows/deploy.yml](.github/workflows/deploy.yml) para desplegarse automáticamente en el servidor Windows Server al hacer push/merge en la rama `main`.
+
