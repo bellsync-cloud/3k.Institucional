@@ -1,9 +1,18 @@
+/* =============================================================================
+   Pages.module.css — Estilos globales de páginas internas — 3KODE Institucional
+   Cubre: pageHeader, grid de visión, stats, cards genéricas, sección teamSection.
+   ============================================================================= */
+
+/* ─────────────────────────────────────────────
+   1. HERO HEADER (compartido por todas las páginas internas)
+───────────────────────────────────────────── */
 .pageHeader {
-  background: linear-gradient(rgba(27, 54, 93, 0.9), rgba(27, 54, 93, 0.9)), 
-              url('../assets/hero.png') center/cover no-repeat;
+  background: linear-gradient(rgba(27, 54, 93, 0.9), rgba(27, 54, 93, 0.9)),
+    url('../assets/hero.png') center / cover no-repeat;
   color: white;
   padding: 160px 0 100px;
   text-align: center;
+  /* Full-width: rompe el container del Layout */
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -22,6 +31,9 @@
   opacity: 0.9;
 }
 
+/* ─────────────────────────────────────────────
+   2. SECCIÓN VISIÓN (2 columnas)
+───────────────────────────────────────────── */
 .section {
   padding: 8rem 0;
 }
@@ -33,6 +45,7 @@
   align-items: center;
 }
 
+/* Columna de contenido izquierdo */
 .content h2 {
   font-size: 2.5rem;
   color: var(--primary);
@@ -40,6 +53,7 @@
   position: relative;
 }
 
+/* Línea decorativa bajo el h2 */
 .content h2::after {
   content: '';
   position: absolute;
@@ -48,6 +62,7 @@
   width: 60px;
   height: 4px;
   background: var(--accent);
+  border-radius: 2px;
 }
 
 .content p {
@@ -57,6 +72,9 @@
   margin-bottom: 2rem;
 }
 
+/* ─────────────────────────────────────────────
+   3. ESTADÍSTICAS
+───────────────────────────────────────────── */
 .statsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -82,6 +100,9 @@
   margin-bottom: 0;
 }
 
+/* ─────────────────────────────────────────────
+   4. CARDS GENÉRICAS (Portfolio, Casos de Uso)
+───────────────────────────────────────────── */
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -98,7 +119,7 @@
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   border-color: var(--accent);
 }
 
@@ -114,13 +135,359 @@
   line-height: 1.6;
 }
 
+/* ─────────────────────────────────────────────
+   5. SECCIÓN NUESTRO EQUIPO
+───────────────────────────────────────────── */
+
+/* Fondo diferenciado con sutil patrón de puntos */
+.teamSection {
+  padding: 8rem 0;
+  background-color: #f0f4f8;
+  /* Full-width */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+/* Encabezado de sección centrado con etiqueta tipo "badge" */
+.sectionHeading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0, 181, 226, 0.1);
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────
+   5a. Grid de tarjetas de colaboradores
+       (auto-fill: se adapta a 1, 2 o 3 columnas)
+───────────────────────────────────────────── */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+  /* Alinea al centro cuando hay pocas cards */
+  justify-content: center;
+}
+
+/* ─────────────────────────────────────────────
+   5b. Tarjeta individual de colaborador
+───────────────────────────────────────────── */
+.teamCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(27, 54, 93, 0.06);
+  /* La animación de hover la maneja Framer Motion en el JSX */
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.teamCard:hover {
+  box-shadow: 0 16px 40px rgba(27, 54, 93, 0.12);
+  border-color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────
+   5c. Avatar con iniciales
+       Usa la CSS variable --member-accent inyectada desde JSX
+       para el color del anillo. Si hay foto futura, reemplazar
+       este bloque por un <img> con border-radius 50%.
+───────────────────────────────────────────── */
+.teamAvatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, #2a5298 100%);
+  border: 4px solid var(--member-accent, var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+  /* Efecto de brillo sutil */
+  box-shadow: 0 0 0 6px rgba(0, 181, 226, 0.12);
+}
+
+.teamAvatar span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* ─────────────────────────────────────────────
+   5d. Textos informativos del perfil
+───────────────────────────────────────────── */
+.teamInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+.teamName {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.teamRole {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.teamSpecialty {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Resumen ejecutivo breve */
+.teamSummary {
+  font-size: 0.9rem;
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  background: #f8fafc;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   5e. Lista de datos de contacto
+───────────────────────────────────────────── */
+.teamContact {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.teamContact li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Ícono SVG de lucide-react dentro de cada ítem */
+.teamContact li svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.teamContact a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.teamContact a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────
+   5f. Tags de tecnologías
+───────────────────────────────────────────── */
+.teamTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.teamTag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(27, 54, 93, 0.07);
+  border: 1px solid rgba(27, 54, 93, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.teamCard:hover .teamTag {
+  background: rgba(0, 181, 226, 0.1);
+  border-color: rgba(0, 181, 226, 0.3);
+  color: #0097c7;
+}
+
+/* ─────────────────────────────────────────────
+   5g. Botón CTA → Ver CV Completo
+───────────────────────────────────────────── */
+.teamCvBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  margin-top: auto; /* Empuja el botón al fondo de la card */
+}
+
+.teamCvBtn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 181, 226, 0.3);
+}
+
+.teamCvBtn:active {
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────
+   6. CLASES AUXILIARES — wrapper de página
+───────────────────────────────────────────── */
+.page {
+  /* Sin padding-top: el Navbar lo gestiona con position absolute */
+}
+
+/* ─────────────────────────────────────────────
+   7. RESPONSIVE
+───────────────────────────────────────────── */
 @media (max-width: 992px) {
+  /* Grid de Visión → una columna */
   .grid {
     grid-template-columns: 1fr;
     gap: 4rem;
   }
-  
+
   .pageHeader h1 {
     font-size: 2.8rem;
+  }
+
+  /* Sección equipo → 1 columna centrada */
+  .teamGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   8. CONFIRMACIÓN DE ENVÍO (compartido por Contacto)
+───────────────────────────────────────────── */
+.successBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  gap: 1.2rem;
+}
+
+.successBox h4 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.successBox p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 340px;
+}
+
+/* Variante oscura para fondos blancos (página Contacto) */
+.resetBtnDark {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  border-radius: 6px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.resetBtnDark:hover {
+  background: var(--primary);
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .pageHeader h1 {
+    font-size: 2.2rem;
+  }
+
+  .pageHeader {
+    padding: 140px 0 80px;
+  }
+
+  .teamCard {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
   }
 }

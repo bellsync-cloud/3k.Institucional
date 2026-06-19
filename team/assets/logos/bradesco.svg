@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50">
+        <rect width="180" height="50" fill="none"/>
+        <rect x="10" y="8" width="34" height="34" fill="#cc092f" rx="6"/>
+        <path d="M27 14 L27 34 M20 22 L27 18 L34 22 M22 28 L27 25 L32 28" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="52" y="35" font-family="'Montserrat', sans-serif" font-weight="700" font-size="24" fill="#cc092f">bradesco</text>
+    </svg>

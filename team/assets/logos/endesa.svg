@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50">
+        <rect width="180" height="50" fill="none"/>
+        <text x="10" y="36" font-family="'Montserrat', sans-serif" font-weight="600" font-size="30" fill="#00a19c">endesa</text>
+        <circle cx="130" cy="24" r="8" fill="#00a19c"/>
+        <circle cx="150" cy="24" r="10" fill="#00a19c" opacity="0.6"/>
+    </svg>

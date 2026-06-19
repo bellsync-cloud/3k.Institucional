@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Minus } from 'lucide-react';
+import { Send, ChevronUp } from 'lucide-react';
 import styles from './ChatWidget.module.css';
 
 interface Message {
@@ -20,7 +20,8 @@ const ChatWidget = () => {
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  /* Cerrado por defecto — se abre al hacer clic en el header */
+  const [isMinimized, setIsMinimized] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -67,10 +68,12 @@ const ChatWidget = () => {
         <div className={styles.chatHeader} onClick={() => setIsMinimized(!isMinimized)} style={{ cursor: 'pointer' }}>
           <div className={styles.headerInfo}>
             <h3>Agente 3KODE IA</h3>
-            <span>En línea</span>
+            {/* Estado: En construcción — cambiar a styles.statusOnline cuando el agente esté activo */}
+            <span className={styles.statusUnderConstruction}>En construcción</span>
           </div>
-          <button className={styles.closeButton}>
-            <Minus size={20} />
+          {/* El chevron rota 180° cuando el widget está expandido */}
+          <button className={styles.closeButton} aria-label={isMinimized ? 'Expandir chat' : 'Minimizar chat'}>
+            <ChevronUp size={20} style={{ transform: isMinimized ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }} />
           </button>
         </div>
 

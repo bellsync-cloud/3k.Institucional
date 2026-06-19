@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50">
+        <rect width="180" height="50" fill="none"/>
+        <text x="10" y="37" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="28" fill="#005ca5">CAIXA</text>
+        <rect x="125" y="10" width="30" height="30" fill="#005ca5" rx="3"/>
+        <path d="M132 15 L148 35 M148 15 L132 35" stroke="#f47920" stroke-width="7" stroke-linecap="round"/>
+    </svg>

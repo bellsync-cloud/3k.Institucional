@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 160" preserveAspectRatio="none">
+    <!-- Navy Blue main block -->
+    <path d="M 0 0 L 580 0 L 470 160 L 0 160 Z" fill="#042948" />
+    
+    <!-- Medium Blue thin accent stripe -->
+    <path d="M 580 0 L 595 0 L 485 160 L 470 160 Z" fill="#0c3c64" />
+    
+    <!-- Teal bright accent stripe -->
+    <path d="M 595 0 L 625 0 L 515 160 L 485 160 Z" fill="#41b0a6" />
+</svg>

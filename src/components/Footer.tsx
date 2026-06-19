@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
           <div>
             <h4>Contacto</h4>
-            <p>Email: contacto@3kode.com.ar</p>
+            <p><a href="mailto:info@3k.ar" style={{ color: 'inherit' }}>info@3k.ar</a></p>
             <p>Ubicación: Argentina</p>
           </div>
         </div>
