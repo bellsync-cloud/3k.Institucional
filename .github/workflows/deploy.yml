@@ -1,4 +1,4 @@
-name: Deploy to Windows Server
+name: Deploy 3KODE Institucional
 
 on:
   push:
@@ -7,33 +7,20 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    name: Despliegue Automático en VPS Donweb
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Conectar por SSH y actualizar contenedor Docker
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build application
-        run: npm run build
-
-      - name: Deploy to Web Server Folder
-        shell: powershell
-        run: |
-          # Define la ruta de destino en tu servidor web (ej. IIS o Nginx en Windows)
-          $DestinationPath = "C:\inetpub\wwwroot\3k.institucional"
-          
-          # Asegurarse de que el directorio de destino existe
-          if (!(Test-Path -Path $DestinationPath)) {
-              New-Item -ItemType Directory -Force -Path $DestinationPath
-          }
-          
-          # Copiar los nuevos archivos compilados
-          Copy-Item -Path .\dist\* -Destination $DestinationPath -Recurse -Force
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /root/app/3k.Institucional
+            git pull origin main
+            cd /root/app
+            docker compose up -d --build web
+            docker image prune -f
